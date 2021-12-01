@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClientesController;
 
+require __DIR__.'/auth.php';
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,4 +27,6 @@ Route::get('/dashboard', function () {
 
 
 
-require __DIR__.'/auth.php';
+Route::get('/clientes', [ClientesController::class, 'indexcliente'])->middleware(['auth'])->name('cliente.index');
+
+
